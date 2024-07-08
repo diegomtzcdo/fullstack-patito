@@ -1,0 +1,476 @@
+{
+	"info": {
+		"_postman_id": "ce321260-4eab-4993-a963-63f4fd6cb39c",
+		"name": "Prueba tecnica P3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20243806"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful Response\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});\r",
+									"\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);\r",
+									"postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{secret_pass_app}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{user_app}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "cdodiegomtz+cliente@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "P4ssw0rd#dev",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url_api}}/oauth/token",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						},
+						"description": "Loguearse como cliente"
+					},
+					"response": []
+				},
+				{
+					"name": "Registrarse",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"cdodiegomtz+cliente@gmail.com\",\r\n    \"password\": \"P4ssw0rd#dev\",\r\n    \"nombre\": \"Diego Martinez\",\r\n    \"direccion\": \"Lagos de Moreno\",\r\n    \"telefono\": \"45754125454\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_api}}/api/auth/registrarse",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"registrarse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user_app}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{secret_pass_app}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "{{refresh_token}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url_api}}/oauth/token",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Producto",
+			"item": [
+				{
+					"name": "Listado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_api}}/producto/todos",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"producto",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Producto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful Response\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});\r",
+									"\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"hawa\", jsonData.data.hawa);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hawa\": \"LSLAS-239ASKL-232\",\r\n    \"nombre\": \"camioneton 1\",\r\n    \"precio\": 1500.00,\r\n    \"existencias\": 20,\r\n    \"porcentajeDescuento\": 15,\r\n\r\n    \"nombreVendedor\": \"Amazon\",\r\n    \"contactoVendedor\": \"real@amazon.com\",\r\n\r\n    \"tienda\": {\r\n        \"nombre\": \"Tienda 1\",\r\n        \"telefono\": \"5464682135\",\r\n        \"direccion\": \"La luna\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_api}}/producto/crear",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"producto",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detalle By Hawa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_api}}/producto/LSLAS-239ASKL-232",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"producto",
+								"LSLAS-239ASKL-232"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listado de detalles por hawas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"LSLAS-239ASKL-232\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_api}}/producto/detalles",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"producto",
+								"detalles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productos\": [\r\n        {\r\n            \"hawa\": \"LSLAS-239ASKL-232\",\r\n            \"cantidad\": 80\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_api}}/pedido/crear",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"pedido",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful Response\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});\r",
+									"\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"id_pedido\", jsonData.data[0].pedidoId);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_api}}/pedido/todos",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"pedido",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cambiar estado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nuevoEstatus\": \"ENTREGADO\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_api}}/pedido/cambiar-estatus/5",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"pedido",
+								"cambiar-estatus",
+								"5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Cambiar estado",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nuevoEstatus\": \"CANCELADO\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_api}}/pedido/cambiar-estatus/3",
+									"host": [
+										"{{url_api}}"
+									],
+									"path": [
+										"pedido",
+										"cambiar-estatus",
+										"3"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Detalle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_api}}/pedido/detalle/3",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"pedido",
+								"detalle",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url_api",
+			"value": "http://localhost:8080/patito-p3/v1",
+			"type": "string"
+		},
+		{
+			"key": "user_app",
+			"value": "patitoApp"
+		},
+		{
+			"key": "secret_pass_app",
+			"value": "p4t1t0!"
+		}
+	]
+}
