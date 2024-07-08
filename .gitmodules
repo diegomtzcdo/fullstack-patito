@@ -1,0 +1,6 @@
+[submodule "front-react"]
+	path = front-react
+	url = https://github.com/diegomtzcdo/front-patito.git
+[submodule "back-java"]
+	path = back-java
+	url = https://github.com/diegomtzcdo/back-patito.git
