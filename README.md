@@ -35,5 +35,5 @@ JDK 11
 ## Requisitos
 Node 18+
 
-[Repositorio Frontend]([https://github.com/diegomtzcdo/back-patito/tree/master](https://github.com/diegomtzcdo/front-patito))
+[Repositorio Frontend](https://github.com/diegomtzcdo/back-patito/tree/master](https://github.com/diegomtzcdo/front-patito)
 
