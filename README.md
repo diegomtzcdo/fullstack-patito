@@ -22,17 +22,17 @@ CREATE DATABASE patitoP3;
 
 Ejecuta el script scriptDB.sql
 
-##Backend
+## Backend
 
-#Requisitos
+# Requisitos
 JDK 11
 
 [Repositorio Backend](https://github.com/diegomtzcdo/back-patito/tree/master)
 
 
-##Frontend
+## Frontend
 
-#Requisitos
+# Requisitos
 Node 18+
 
 [Repositorio Frontend]([https://github.com/diegomtzcdo/back-patito/tree/master](https://github.com/diegomtzcdo/front-patito))
