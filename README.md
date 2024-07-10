@@ -64,6 +64,7 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.SQLServerDialect
 
 ```bash
 cd back-java
+git checkout master
 ```
 
 4. Para ejecutar el backend:
@@ -81,6 +82,7 @@ cd back-java
 
 ```
 cd front-react
+git checkout main
 ```
 
 3. Instala las dependencias:
