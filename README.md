@@ -28,8 +28,8 @@ Prueba técnica para P3 desarrollo de fullstack on Java, Spring Framework y Reac
 ### Clonar el repositorio
 
 ```bash
-git clone https://github.com/usuario/proyecto.git
-cd proyecto
+git clone https://github.com/diegomtzcdo/fullstack-patito.git
+cd fullstack-patito
 ```
 
 ### Base de Datos
