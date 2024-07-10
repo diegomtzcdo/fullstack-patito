@@ -35,7 +35,7 @@ cd proyecto
 ### Base de Datos
 
 1. Asegúrate de tener SQL Server instalado y en ejecución.
-2. Ejecuta el script `scriptDB2.sql` para crear y poblar la base de datos `patitoP3`.
+2. Ejecuta el script `scriptDB.sql` para crear y poblar la base de datos `patitoP3`.
 
 ```sql
 sqlcmd -S <SERVER> -U <USERNAME> -P <PASSWORD> -d master -i scriptDB2.sql
@@ -101,3 +101,9 @@ cdodiegomtz+cliente@gmail.com
 Pass:
 P4ssw0rd#dev
 ```
+
+# Contacto
+
+[![Mail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:cdodiegomtz@gmail.com)
+
+[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/@cdoDiegomtz)
