@@ -1,23 +1,29 @@
 USE master;
-CREATE LOGIN [pruebaP4] WITH PASSWORD = 'pruebaP4';
+CREATE LOGIN [pruebaP3] WITH PASSWORD = 'pruebaP3';
 
-USE [patitoP4]
+IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'patitoP3')
+  BEGIN
+    CREATE DATABASE patitoP
+
+  END
+
+USE [patitoP3]
 GO
 
 -- Crear usuario
-IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'pruebaP4')
+IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'pruebaP3')
 BEGIN
-    CREATE USER [pruebaP4] FOR LOGIN [pruebaP4] WITH DEFAULT_SCHEMA=[dbo]
-    ALTER ROLE [db_owner] ADD MEMBER [pruebaP4]
-    ALTER ROLE [db_accessadmin] ADD MEMBER [pruebaP4]
-    ALTER ROLE [db_securityadmin] ADD MEMBER [pruebaP4]
-    ALTER ROLE [db_ddladmin] ADD MEMBER [pruebaP4]
-    ALTER ROLE [db_backupoperator] ADD MEMBER [pruebaP4]
-    ALTER ROLE [db_datareader] ADD MEMBER [pruebaP4]
-    ALTER ROLE [db_datawriter] ADD MEMBER [pruebaP4]
+    CREATE USER [pruebaP3] FOR LOGIN [pruebaP3] WITH DEFAULT_SCHEMA=[dbo]
+    ALTER ROLE [db_owner] ADD MEMBER [pruebaP3]
+    ALTER ROLE [db_accessadmin] ADD MEMBER [pruebaP3]
+    ALTER ROLE [db_securityadmin] ADD MEMBER [pruebaP3]
+    ALTER ROLE [db_ddladmin] ADD MEMBER [pruebaP3]
+    ALTER ROLE [db_backupoperator] ADD MEMBER [pruebaP3]
+    ALTER ROLE [db_datareader] ADD MEMBER [pruebaP3]
+    ALTER ROLE [db_datawriter] ADD MEMBER [pruebaP3]
     -- No añadir a los roles de negación de lectura y escritura
-    -- ALTER ROLE [db_denydatareader] ADD MEMBER [pruebaP4]
-    -- ALTER ROLE [db_denydatawriter] ADD MEMBER [pruebaP4]
+    -- ALTER ROLE [db_denydatareader] ADD MEMBER [pruebaP3]
+    -- ALTER ROLE [db_denydatawriter] ADD MEMBER [pruebaP3]
 END
 GO
 
